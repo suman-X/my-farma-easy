@@ -1,0 +1,7 @@
+project_id = "zraimewsjalbzkscvoou"
+
+[functions.analyze-pest]
+verify_jwt = false
+
+[functions.get-weather-alert]
+verify_jwt = false
