@@ -3,21 +3,28 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PestDetection } from "@/components/PestDetection";
 import { WeatherMonitoring } from "@/components/WeatherMonitoring";
 import { Chatbot } from "@/components/Chatbot";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
       {/* Header */}
       <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-xl">
-              <Leaf className="h-6 w-6 text-primary-foreground" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-xl">
+                <Leaf className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-foreground">{t.appName}</h1>
+                <p className="text-sm text-muted-foreground">{t.appTagline}</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">CropGuard AI</h1>
-              <p className="text-sm text-muted-foreground">Smart Pest Detection System</p>
-            </div>
+            <LanguageSelector />
           </div>
         </div>
       </header>
@@ -26,10 +33,10 @@ const Index = () => {
         {/* Hero Section */}
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-leaf bg-clip-text text-transparent">
-            Protect Your Crops with AI
+            {t.heroTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real-time weather alerts and AI-powered pest detection
+            {t.heroSubtitle}
           </p>
         </div>
 
@@ -45,12 +52,12 @@ const Index = () => {
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Cloud className="h-5 w-5" />
-                Weather Monitoring
+                {t.weatherMonitoring}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Real-time weather analysis to predict pest outbreak conditions and provide early warnings
+                {t.weatherMonitoringDesc}
               </p>
             </CardContent>
           </Card>
@@ -58,12 +65,12 @@ const Index = () => {
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Camera className="h-5 w-5" />
-                AI Detection
+                {t.aiDetection}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Advanced image analysis to identify pests and diseases from visual symptoms
+                {t.aiDetectionDesc}
               </p>
             </CardContent>
           </Card>
@@ -71,12 +78,12 @@ const Index = () => {
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5" />
-                Smart Alerts
+                {t.smartAlerts}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Location-based risk alerts help you take preventive action before pests damage crops
+                {t.smartAlertsDesc}
               </p>
             </CardContent>
           </Card>
